@@ -198,33 +198,8 @@
   overlay.addEventListener('click', function () { setMenu(false); });
   document.querySelectorAll('.nav-mob').forEach(function (l) { l.addEventListener('click', function () { setMenu(false); }); });
 
-  /* Login modal */
-  var modal = document.getElementById('loginModal');
-  var lastFocus = null;
-
-  function openLogin() {
-    lastFocus = document.activeElement;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    setMenu(false);
-    setLangPanel(false);
-  }
-  function closeLogin() {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    if (lastFocus) lastFocus.focus();
-  }
-
-  document.getElementById('loginOpen').addEventListener('click', openLogin);
-  document.getElementById('loginOpenMob').addEventListener('click', openLogin);
-  document.getElementById('loginClose').addEventListener('click', closeLogin);
-  document.getElementById('loginBackdrop').addEventListener('click', closeLogin);
-  document.getElementById('loginForm').addEventListener('submit', function (e) { e.preventDefault(); closeLogin(); });
-
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeLogin(); setMenu(false); setLangPanel(false); }
+    if (e.key === 'Escape') { setMenu(false); setLangPanel(false); }
   });
 
   /* Form toggles */
@@ -254,13 +229,36 @@
   var form = document.getElementById('contactForm');
   var formWrap = document.getElementById('formWrap');
   var formDone = document.getElementById('formDone');
+  var formError = document.getElementById('formError');
   var submitBtn = document.getElementById('f-submit');
   var submitLabel = document.getElementById('f-submit-label');
+  var replyToField = document.getElementById('f-replyto');
 
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@hezokorea.com';
+  var INQUIRY_EMAIL = 'info@hezokorea.com';
+
+  function buildInquiryBody(fd) {
+    var lines = [];
+    fd.forEach(function (value, key) {
+      if (key.charAt(0) === '_' || key === '_honey') return;
+      lines.push(key + ': ' + value);
+    });
+    return lines.join('\n');
+  }
+
+  function showFormError(msg) {
+    formError.textContent = msg;
+    formError.classList.remove('hidden');
+  }
+
+  function hideFormError() {
+    formError.textContent = '';
+    formError.classList.add('hidden');
+  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    hideFormError();
     if (fType.value === 'document' && !fDocCat.value) {
       fDocCat.focus();
       fDocCat.setCustomValidity(t(currentLang, 'form.catRequired'));
@@ -269,25 +267,32 @@
       return;
     }
     if (!form.checkValidity()) { form.reportValidity(); return; }
+
     submitBtn.disabled = true;
     submitLabel.textContent = t(currentLang, 'form.sending');
 
     var fd = new FormData(form);
-    fd.append('_subject', 'HezoKorea inquiry — ' + fd.get('name'));
-    fd.append('_template', 'table');
-    fd.append('_captcha', 'false');
+    var customerEmail = fd.get('email') || '';
+    replyToField.value = customerEmail;
+    fd.set('_replyto', customerEmail);
+    fd.set('_subject', 'HezoKorea inquiry — ' + fd.get('name'));
+    fd.set('_template', 'table');
+    fd.set('_captcha', 'false');
 
     fetch(FORM_ENDPOINT, { method: 'POST', body: fd, headers: { Accept: 'application/json' } })
-      .then(function (res) {
-        if (!res.ok) throw new Error('submit failed');
-        return res.json();
-      })
-      .then(function () {
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (result) {
+        if (!result.ok || (result.data && result.data.success === false)) {
+          throw new Error((result.data && result.data.message) || 'submit failed');
+        }
         formWrap.style.display = 'none';
         formDone.classList.add('show');
       })
       .catch(function () {
-        window.location.href = 'mailto:info@hezokorea.com?subject=' + encodeURIComponent('HezoKorea inquiry') + '&body=' + encodeURIComponent('Please describe your request here.');
+        var subject = encodeURIComponent('HezoKorea inquiry — ' + fd.get('name'));
+        var body = encodeURIComponent(buildInquiryBody(fd));
+        showFormError('Could not send automatically. Opening your email app — please send to ' + INQUIRY_EMAIL + '.');
+        window.location.href = 'mailto:' + INQUIRY_EMAIL + '?subject=' + subject + '&body=' + body;
       })
       .finally(function () {
         submitBtn.disabled = false;
@@ -302,6 +307,7 @@
     docExtra.classList.remove('open');
     formDone.classList.remove('show');
     formWrap.style.display = 'block';
+    hideFormError();
     applyLang(currentLang);
   });
 
