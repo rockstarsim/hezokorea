@@ -1,0 +1,10 @@
+{
+  "name": "hezokorea",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HezoKorea — document services and proxy shopping concierge for Korea",
+  "scripts": {
+    "dev": "python3 -m http.server 8765",
+    "preview": "python3 -m http.server 8765"
+  }
+}
