@@ -10,11 +10,11 @@
 
   var STORE_LOGOS = [
     { name: 'Coupang', src: '/logos/coupang.svg' },
-    { name: 'Naver Smart Store', src: '/logos/smartstore.svg' },
-    { name: 'Bunjang', src: '/logos/bunjang.svg' },
-    { name: 'Karrot Market', src: '/logos/karrot.svg' },
+    { name: 'Naver Smart Store', src: '/logos/smartstore.png' },
+    { name: 'Bunjang', src: '/logos/bunjang.png' },
+    { name: 'Danggeun Market', src: '/logos/karrot.png' },
     { name: 'Gmarket', src: '/logos/gmarket.svg' },
-    { name: '11st', src: '/logos/11st.svg' }
+    { name: '11st', src: '/logos/11st.png' }
   ];
 
   function t(lang, key) {
