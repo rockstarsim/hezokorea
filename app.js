@@ -9,12 +9,12 @@
   var HERO_ROTATE_KEYS = ['hero.rotate1', 'hero.rotate2', 'hero.rotate3', 'hero.rotate4'];
 
   var STORE_LOGOS = [
-    { name: 'Coupang', svg: '<svg class="store-logo shrink-0" viewBox="0 0 128 36" width="104" height="30" role="img" aria-label="Coupang"><title>Coupang</title><rect width="128" height="36" rx="8" fill="#E02020"/><path d="M20 10 L30 18 L20 26 L15 21 L20 18 L15 15 Z" fill="#fff"/><text x="38" y="24" font-family="Arial Black,Helvetica,sans-serif" font-weight="900" font-size="15" fill="#fff" letter-spacing="-0.5">coupang</text></svg>' },
-    { name: 'Naver Smart Store', svg: '<svg class="store-logo shrink-0" viewBox="0 0 132 36" width="108" height="30" role="img" aria-label="Naver Smart Store"><title>Naver Smart Store</title><rect width="132" height="36" rx="8" fill="#03C75A"/><rect x="10" y="8" width="20" height="20" rx="4" fill="#fff"/><text x="14" y="23" font-family="Arial Black,Helvetica,sans-serif" font-weight="900" font-size="16" fill="#03C75A">N</text><text x="38" y="17" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#fff">Smart</text><text x="38" y="28" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#fff">Store</text></svg>' },
-    { name: 'Bunjang', svg: '<svg class="store-logo shrink-0" viewBox="0 0 120 36" width="100" height="30" role="img" aria-label="Bunjang"><title>Bunjang</title><rect width="120" height="36" rx="8" fill="#FF4D4D"/><path d="M16 26 L22 10 L26 10 L20 26 Z M24 10 L30 26 L26 26 L20 10 Z" fill="#fff"/><text x="38" y="24" font-family="Arial Black,Helvetica,sans-serif" font-weight="900" font-size="14" fill="#fff">BUNJANG</text></svg>' },
-    { name: 'Danggeun Market', svg: '<svg class="store-logo shrink-0" viewBox="0 0 148 36" width="120" height="30" role="img" aria-label="Danggeun Market"><title>Danggeun Market</title><rect width="148" height="36" rx="8" fill="#FF6F0F"/><path d="M22 24 C16 24 14 18 14 14 C14 10 17 8 20 8 C22 8 23 9 24 11 C25 9 26 8 28 8 C31 8 34 10 34 14 C34 18 32 24 26 24" fill="#fff"/><path d="M20 8 L18 4 M28 8 L30 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="17" y="13" width="14" height="3" rx="1.5" fill="#FF6F0F"/><text x="42" y="24" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="13" fill="#fff">Danggeun</text></svg>' },
-    { name: 'Gmarket', svg: '<svg class="store-logo shrink-0" viewBox="0 0 120 36" width="100" height="30" role="img" aria-label="Gmarket"><title>Gmarket</title><rect width="120" height="36" rx="8" fill="#00C73C"/><path d="M14 22 Q24 8 34 22" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="24" cy="22" r="3" fill="#fff"/><text x="42" y="24" font-family="Arial Black,Helvetica,sans-serif" font-weight="900" font-size="14" fill="#fff">Gmarket</text></svg>' },
-    { name: '11st', svg: '<svg class="store-logo shrink-0" viewBox="0 0 96 36" width="84" height="30" role="img" aria-label="11st"><title>11st</title><rect width="96" height="36" rx="8" fill="#FF0036"/><text x="12" y="25" font-family="Arial Black,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#fff">11</text><text x="44" y="24" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14" fill="#fff">st</text><circle cx="82" cy="18" r="4" fill="#fff"/></svg>' }
+    { name: 'Coupang', src: '/logos/coupang.svg' },
+    { name: 'Naver Smart Store', src: '/logos/smartstore.svg' },
+    { name: 'Bunjang', src: '/logos/bunjang.svg' },
+    { name: 'Karrot Market', src: '/logos/karrot.svg' },
+    { name: 'Gmarket', src: '/logos/gmarket.svg' },
+    { name: '11st', src: '/logos/11st.svg' }
   ];
 
   function t(lang, key) {
@@ -31,7 +31,9 @@
     if (!el) return;
     var html = '';
     for (var r = 0; r < 2; r++) {
-      STORE_LOGOS.forEach(function (s) { html += s.svg; });
+      STORE_LOGOS.forEach(function (s) {
+        html += '<img class="store-logo shrink-0" src="' + s.src + '" alt="' + esc(s.name) + '" height="28" loading="lazy" decoding="async" />';
+      });
     }
     el.innerHTML = html;
   }

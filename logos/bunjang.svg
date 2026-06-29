@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 36" role="img" aria-label="Bunjang">
+  <title>Bunjang</title>
+  <path fill="#F91949" d="M10 6 4 20l6 10h4.5l-1.8-3 4.8-7.2-4.8-7.2 1.8-3H10z"/>
+  <path fill="#F91949" d="M10 14.5 14.8 22 10 29.5 12.5 32l8-12.5L12.5 6 10 8.5l4.8 6z"/>
+  <text x="30" y="25" font-family="'Malgun Gothic', 'Apple SD Gothic Neo', Arial, sans-serif" font-size="18" font-weight="800" fill="#F91949">번개장터</text>
+</svg>

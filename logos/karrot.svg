@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 36" role="img" aria-label="Karrot Market">
+  <title>Karrot Market</title>
+  <path fill="#FF7E36" d="M18 32C9.2 32 3 25.8 3 17.4S9.2 3 18 3c3 0 5.6 1.1 7.4 2.9 1.8-1.8 4.4-2.9 7.4-2.9 8.8 0 15 6.2 15 14.4S31.2 32 22.4 32H18z"/>
+  <ellipse cx="14.5" cy="14" rx="1.6" ry="2.2" fill="#fff"/>
+  <ellipse cx="21.5" cy="14" rx="1.6" ry="2.2" fill="#fff"/>
+  <rect x="13.5" y="19" width="9" height="2.2" rx="1.1" fill="#FF7E36"/>
+  <path stroke="#2DB400" stroke-width="2" stroke-linecap="round" d="M16 3V0M24 3l2-3" fill="none"/>
+  <text x="40" y="24" font-family="'Malgun Gothic', 'Apple SD Gothic Neo', Arial, sans-serif" font-size="16" font-weight="800" fill="#FF7E36">????</text>
+</svg>

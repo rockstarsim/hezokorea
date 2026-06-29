@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 32" role="img" aria-label="Naver Smart Store">
+  <title>Naver Smart Store</title>
+  <path fill="#03C75A" transform="translate(2 4) scale(1)" d="M16.273 12.845 7.376 0H0v24h7.726V11.156 16.624 24H24V0h-7.727v12.845Z"/>
+  <text x="34" y="13" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" fill="#03C75A" letter-spacing="0.5">NAVER</text>
+  <text x="34" y="26" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="#111827">Smart Store</text>
+</svg>
