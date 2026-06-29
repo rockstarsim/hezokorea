@@ -4,6 +4,9 @@
   var LANG_KEY = 'hezo-lang';
   var currentLang = localStorage.getItem(LANG_KEY) || 'en';
   var activeCat = '';
+  var heroRotateIdx = 0;
+  var heroRotateTimer = null;
+  var HERO_ROTATE_KEYS = ['hero.rotate1', 'hero.rotate2', 'hero.rotate3', 'hero.rotate4'];
 
   var STORE_LOGOS = [
     { name: 'Coupang', svg: '<svg class="store-logo shrink-0" viewBox="0 0 128 36" width="104" height="30" role="img" aria-label="Coupang"><title>Coupang</title><rect width="128" height="36" rx="8" fill="#E02020"/><path d="M20 10 L30 18 L20 26 L15 21 L20 18 L15 15 Z" fill="#fff"/><text x="38" y="24" font-family="Arial Black,Helvetica,sans-serif" font-weight="900" font-size="15" fill="#fff" letter-spacing="-0.5">coupang</text></svg>' },
@@ -109,6 +112,10 @@
       var k = el.getAttribute('data-i18n-ph');
       if (pack.keys[k] != null) el.placeholder = pack.keys[k];
     });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-aria');
+      if (pack.keys[k] != null) el.setAttribute('aria-label', pack.keys[k]);
+    });
 
     document.getElementById('langLabel').textContent = window.HEZO_I18N.codes[lang] || lang.toUpperCase();
     var mob = document.getElementById('langMob');
@@ -117,6 +124,29 @@
     renderDocAccordion(lang);
     renderExpandedTable(lang);
     renderCatHints(lang);
+    heroRotateIdx = 0;
+    syncHeroRotateText();
+    startHeroRotate();
+  }
+
+  function syncHeroRotateText() {
+    var el = document.getElementById('heroDynamic');
+    if (!el) return;
+    el.textContent = t(currentLang, HERO_ROTATE_KEYS[heroRotateIdx]);
+  }
+
+  function startHeroRotate() {
+    if (heroRotateTimer) clearInterval(heroRotateTimer);
+    var el = document.getElementById('heroDynamic');
+    if (!el) return;
+    heroRotateTimer = setInterval(function () {
+      el.classList.add('out');
+      setTimeout(function () {
+        heroRotateIdx = (heroRotateIdx + 1) % HERO_ROTATE_KEYS.length;
+        syncHeroRotateText();
+        el.classList.remove('out');
+      }, 320);
+    }, 3200);
   }
 
   /* Language dropdown */
@@ -199,8 +229,54 @@
   document.querySelectorAll('.nav-mob').forEach(function (l) { l.addEventListener('click', function () { setMenu(false); }); });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { setMenu(false); setLangPanel(false); }
+    if (e.key === 'Escape') {
+      setMenu(false);
+      setLangPanel(false);
+      setLoginModal(false);
+    }
   });
+
+  /* Login modal */
+  var loginModal = document.getElementById('loginModal');
+  var loginOverlay = document.getElementById('loginOverlay');
+  var loginClose = document.getElementById('loginClose');
+  var loginBtn = document.getElementById('loginBtn');
+  var loginBtnMob = document.getElementById('loginBtnMob');
+  var loginForm = document.getElementById('loginForm');
+  var loginOpen = false;
+
+  function setLoginModal(open) {
+    if (!loginModal) return;
+    loginOpen = open;
+    loginModal.classList.toggle('open', open);
+    loginModal.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : (menuOpen ? 'hidden' : '');
+    if (open) {
+      var first = loginModal.querySelector('input, button');
+      if (first) setTimeout(function () { first.focus(); }, 50);
+    }
+  }
+
+  function openLogin() {
+    setMenu(false);
+    setLoginModal(true);
+  }
+
+  if (loginBtn) loginBtn.addEventListener('click', openLogin);
+  if (loginBtnMob) loginBtnMob.addEventListener('click', openLogin);
+  if (loginClose) loginClose.addEventListener('click', function () { setLoginModal(false); });
+  if (loginOverlay) loginOverlay.addEventListener('click', function () { setLoginModal(false); });
+  if (loginModal) {
+    loginModal.addEventListener('click', function (e) {
+      if (e.target === loginModal || e.target === loginOverlay) setLoginModal(false);
+    });
+  }
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      setLoginModal(false);
+    });
+  }
 
   /* Form toggles */
   var fType = document.getElementById('f-type');

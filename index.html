@@ -70,10 +70,47 @@
     .overlay { opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
     .overlay.open { opacity: 1; visibility: visible; }
 
-    .modal { opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    .modal { opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s; }
     .modal.open { opacity: 1; visibility: visible; }
     .modal-box { transform: scale(.96) translateY(8px); transition: transform .35s cubic-bezier(.22,1,.36,1); }
     .modal.open .modal-box { transform: scale(1) translateY(0); }
+
+    .hero-title { font-size: clamp(2rem, 5.5vw + 0.5rem, 3.35rem); letter-spacing: -0.035em; line-height: 1.06; }
+    .hero-dynamic { display: inline-block; min-width: 7.5ch; transition: opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1); }
+    .hero-dynamic.out { opacity: 0; transform: translateY(10px); }
+
+    .process-timeline { counter-reset: proc-step; }
+    .process-step { position: relative; }
+    .process-step::before {
+      content: ''; position: absolute; z-index: 0; pointer-events: none;
+      background: linear-gradient(90deg, rgba(165,176,232,.35), rgba(37,99,235,.55));
+    }
+    .process-step:not(:last-child)::after {
+      content: ''; position: absolute; z-index: 1; pointer-events: none;
+      border: solid rgba(165,176,232,.9); border-width: 0 2px 2px 0;
+      transform: rotate(-45deg); width: 8px; height: 8px;
+    }
+    @media (min-width: 1024px) {
+      .process-step:not(:last-child)::before { top: 2.75rem; left: calc(50% + 1.75rem); right: calc(-50% + 1.75rem); height: 2px; }
+      .process-step:not(:last-child)::after { top: 2.35rem; right: -4px; }
+    }
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .process-step:nth-child(odd):not(:last-child)::before { top: 2.75rem; left: calc(50% + 1.75rem); width: calc(100% - 3.5rem); height: 2px; }
+      .process-step:nth-child(odd):not(:last-child)::after { top: 2.35rem; right: 0; }
+      .process-step:nth-child(even)::before { top: -1.25rem; left: 50%; width: 2px; height: 1.25rem; background: linear-gradient(180deg, rgba(165,176,232,.35), rgba(37,99,235,.55)); }
+      .process-step:nth-child(even)::after { top: -6px; left: calc(50% - 4px); transform: rotate(45deg); }
+    }
+    @media (max-width: 639px) {
+      .process-step:not(:last-child)::before { top: auto; bottom: -0.65rem; left: 50%; width: 2px; height: 0.65rem; background: linear-gradient(180deg, rgba(165,176,232,.35), rgba(37,99,235,.55)); }
+      .process-step:not(:last-child)::after { bottom: -10px; left: calc(50% - 4px); transform: rotate(45deg); }
+    }
+    .process-num {
+      width: 2.25rem; height: 2.25rem; border-radius: 9999px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: .75rem; font-weight: 800; letter-spacing: .02em;
+      background: rgba(124,140,219,.2); color: #a5b0e8; border: 1px solid rgba(165,176,232,.35);
+    }
+    .process-step.is-final .process-num { background: rgba(37,99,235,.25); color: #fff; border-color: rgba(124,140,219,.5); }
 
     .proxy-extra, .doc-extra { grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.22,1,.36,1); }
     .proxy-extra.open, .doc-extra.open { grid-template-rows: 1fr; }
@@ -152,6 +189,7 @@
           </ul>
         </div>
 
+        <button id="loginBtn" type="button" data-i18n="nav.login" class="hidden sm:inline-flex px-3 py-2 text-sm font-semibold text-ink-soft rounded-xl hover:bg-cream-dark hover:text-ink transition-colors">Log in</button>
         <a href="#contact" data-i18n="nav.cta" class="hidden sm:inline-flex px-3 py-2 text-sm font-semibold text-white bg-ink rounded-xl hover:bg-ink-muted transition-colors">Get Started</a>
         <button id="menuBtn" type="button" class="lg:hidden ham relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-xl hover:bg-cream-dark" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
           <span class="block w-4 h-0.5 bg-ink rounded-full"></span>
@@ -187,7 +225,8 @@
           <option value="ko">한국어</option>
         </select>
       </div>
-      <div class="mt-auto pt-6 border-t border-cream-dark">
+      <div class="mt-auto pt-6 border-t border-cream-dark space-y-2">
+        <button id="loginBtnMob" type="button" data-i18n="nav.login" class="w-full py-3 text-sm font-semibold text-ink bg-cream border border-cream-dark rounded-xl hover:bg-cream-dark transition-colors">Log in</button>
         <a href="#contact" data-i18n="nav.cta" class="nav-mob block text-center py-3 text-sm font-semibold text-white bg-ink rounded-xl">Get Started</a>
       </div>
     </div>
@@ -202,9 +241,11 @@
             <span class="w-1.5 h-1.5 rounded-full bg-periwinkle animate-pulse"></span>
             <span data-i18n="hero.badge">Korea concierge · Est. for expats &amp; visitors</span>
           </div>
-          <h1 id="hero-h1" class="text-[2.5rem] sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.08] tracking-tight text-ink">
-            <span data-i18n="hero.title1">Everything you want,</span><br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-periwinkle-dark to-accent" data-i18n="hero.title2">delivered from Korea.</span>
+          <h1 id="hero-h1" class="hero-title font-extrabold tracking-tight text-ink max-w-[18ch] sm:max-w-none">
+            <span class="block" data-i18n="hero.title1">Everything you want,</span>
+            <span class="block mt-1 sm:mt-1.5">
+              <span id="heroDynamic" class="hero-dynamic text-transparent bg-clip-text bg-gradient-to-r from-periwinkle-dark via-periwinkle to-accent">delivered</span><span data-i18n="hero.titleSuffix"> from Korea.</span>
+            </span>
           </h1>
           <p class="mt-6 text-lg text-ink-soft leading-relaxed max-w-lg" data-i18n="hero.subtitle">
             Documents, proxy shopping, and local logistics — one trusted team handling the complexity so you don't have to.
@@ -219,7 +260,7 @@
             </a>
           </div>
           <dl class="mt-12 grid grid-cols-3 gap-6 max-w-md">
-            <div><dt class="text-2xl font-bold text-ink">2hr</dt><dd class="text-xs text-ink-soft mt-0.5" data-i18n="hero.stat1">Avg. response</dd></div>
+            <div><dt class="text-2xl font-bold text-ink" data-i18n="hero.stat1Val">Soon</dt><dd class="text-xs text-ink-soft mt-0.5" data-i18n="hero.stat1">We reply</dd></div>
             <div><dt class="text-2xl font-bold text-ink">40+</dt><dd class="text-xs text-ink-soft mt-0.5" data-i18n="hero.stat2">Countries shipped</dd></div>
             <div><dt class="text-2xl font-bold text-ink">5★</dt><dd class="text-xs text-ink-soft mt-0.5" data-i18n="hero.stat3">Client rating</dd></div>
           </dl>
@@ -266,7 +307,7 @@
 
     <!-- Partner marquee with store logos -->
     <div class="border-y border-cream-dark bg-white py-5 overflow-hidden" aria-label="Supported marketplaces">
-      <p class="text-center text-xs font-semibold text-ink-soft uppercase tracking-widest mb-4 px-4" data-i18n="stores.label">Supported marketplaces</p>
+      <p class="text-center text-sm sm:text-base font-bold text-ink tracking-tight mb-4 px-4" data-i18n="stores.label">Supported Platforms for Proxy Shopping</p>
       <div class="flex whitespace-nowrap">
         <div id="storeMarquee" class="marquee-track flex items-center gap-10 px-6"></div>
       </div>
@@ -373,7 +414,7 @@
         <div class="reveal mt-10 flex flex-wrap items-center gap-4 p-5 sm:p-6 bg-ink rounded-2xl text-white">
           <div class="flex-1 min-w-[200px]">
             <p class="text-xs font-bold text-periwinkle-light uppercase tracking-wider mb-1" data-i18n="doc.contactLabel">Submit by email</p>
-            <p class="text-sm text-slate-300" data-i18n="doc.contactDesc">Send your case to info@hezokorea.com — we'll reply within 2 hours.</p>
+            <p class="text-sm text-slate-300" data-i18n="doc.contactDesc">Send your case to info@hezokorea.com — we'll get back to you soon.</p>
             <a href="mailto:info@hezokorea.com" class="inline-block mt-2 text-sm font-semibold text-white underline underline-offset-2 hover:text-periwinkle-light">info@hezokorea.com</a>
           </div>
           <a href="#contact" data-i18n="doc.cta" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-ink text-sm font-semibold rounded-xl hover:bg-cream transition-colors">Submit a case inquiry →</a>
@@ -392,30 +433,30 @@
           <p class="text-slate-400 max-w-sm text-base leading-relaxed" data-i18n="proc.subtitle">Our proxy shopping flow is designed to be transparent at every stage — no surprises, no guesswork.</p>
         </div>
 
-        <ol class="reveal grid sm:grid-cols-2 lg:grid-cols-5 gap-4 list-none p-0 m-0">
-          <li class="group p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
-            <span class="text-3xl font-extrabold text-periwinkle-light/40 group-hover:text-periwinkle-light transition-colors">01</span>
-            <h3 class="mt-4 font-bold" data-i18n="proc.s1t">Share the link</h3>
+        <ol class="process-timeline reveal grid sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 lg:gap-3 list-none p-0 m-0">
+          <li class="process-step group relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
+            <span class="process-num">01</span>
+            <h3 class="mt-4 font-bold tracking-tight" data-i18n="proc.s1t">Share the link</h3>
             <p class="mt-2 text-sm text-slate-400 leading-relaxed" data-i18n="proc.s1d">Paste any Korean marketplace URL — Coupang, Naver, Bunjang, and more.</p>
           </li>
-          <li class="group p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
-            <span class="text-3xl font-extrabold text-periwinkle-light/40 group-hover:text-periwinkle-light transition-colors">02</span>
-            <h3 class="mt-4 font-bold" data-i18n="proc.s2t">We verify</h3>
+          <li class="process-step group relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
+            <span class="process-num">02</span>
+            <h3 class="mt-4 font-bold tracking-tight" data-i18n="proc.s2t">We verify</h3>
             <p class="mt-2 text-sm text-slate-400 leading-relaxed" data-i18n="proc.s2d">Stock, condition, and shipping feasibility checked within hours.</p>
           </li>
-          <li class="group p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
-            <span class="text-3xl font-extrabold text-periwinkle-light/40 group-hover:text-periwinkle-light transition-colors">03</span>
-            <h3 class="mt-4 font-bold" data-i18n="proc.s3t">You pay</h3>
+          <li class="process-step group relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
+            <span class="process-num">03</span>
+            <h3 class="mt-4 font-bold tracking-tight" data-i18n="proc.s3t">You pay</h3>
             <p class="mt-2 text-sm text-slate-400 leading-relaxed" data-i18n="proc.s3d">Item price + flat service fee. Full breakdown before you commit.</p>
           </li>
-          <li class="group p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
-            <span class="text-3xl font-extrabold text-periwinkle-light/40 group-hover:text-periwinkle-light transition-colors">04</span>
-            <h3 class="mt-4 font-bold" data-i18n="proc.s4t">We purchase</h3>
+          <li class="process-step group relative p-6 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/8 hover:border-white/15 transition-all">
+            <span class="process-num">04</span>
+            <h3 class="mt-4 font-bold tracking-tight" data-i18n="proc.s4t">We purchase</h3>
             <p class="mt-2 text-sm text-slate-400 leading-relaxed" data-i18n="proc.s4d">Our local team buys immediately using established seller accounts.</p>
           </li>
-          <li class="group p-6 rounded-2xl bg-gradient-to-br from-periwinkle/20 to-accent/10 border border-periwinkle/20 hover:border-periwinkle/40 transition-all sm:col-span-2 lg:col-span-1">
-            <span class="text-3xl font-extrabold text-periwinkle-light">05</span>
-            <h3 class="mt-4 font-bold" data-i18n="proc.s5t">Delivered</h3>
+          <li class="process-step is-final group relative p-6 rounded-2xl bg-gradient-to-br from-periwinkle/20 to-accent/10 border border-periwinkle/20 hover:border-periwinkle/40 transition-all sm:col-span-2 lg:col-span-1">
+            <span class="process-num">05</span>
+            <h3 class="mt-4 font-bold tracking-tight" data-i18n="proc.s5t">Delivered</h3>
             <p class="mt-2 text-sm text-slate-300 leading-relaxed" data-i18n="proc.s5d">Repackaged and shipped to your door via DHL or UPS.</p>
           </li>
         </ol>
@@ -428,7 +469,7 @@
         <div class="reveal lg:col-span-2">
           <p class="text-xs font-bold text-accent uppercase tracking-widest mb-3" data-i18n="contact.label">Get in touch</p>
           <h2 id="contact-h2" class="text-3xl sm:text-4xl font-extrabold tracking-tight" data-i18n-html="contact.title">Tell us what<br/>you need.</h2>
-          <p class="mt-4 text-ink-soft leading-relaxed" data-i18n="contact.subtitle">Submit the form below — our coordinator will respond by email within 2 hours.</p>
+          <p class="mt-4 text-ink-soft leading-relaxed" data-i18n="contact.subtitle">Submit the form below — our coordinator will get back to you by email soon.</p>
           <ul class="mt-10 space-y-4" role="list">
             <li class="flex items-start gap-3">
               <div class="w-9 h-9 rounded-xl bg-cream-dark flex items-center justify-center shrink-0">
@@ -444,7 +485,7 @@
               <div class="w-9 h-9 rounded-xl bg-cream-dark flex items-center justify-center shrink-0">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
-              <div><p class="text-sm font-semibold" data-i18n="contact.response">Response time</p><p class="text-sm text-ink-soft" data-i18n="contact.responseVal">Within 2 hours, Mon–Sat</p></div>
+              <div><p class="text-sm font-semibold" data-i18n="contact.response">Our reply</p><p class="text-sm text-ink-soft" data-i18n="contact.responseVal">We'll get back to you soon</p></div>
             </li>
           </ul>
         </div>
@@ -503,7 +544,7 @@
                   <div class="pt-4 space-y-4">
                     <div>
                       <label for="f-link" class="block text-xs font-semibold text-ink-muted mb-1.5" data-i18n="form.link">Product link</label>
-                      <input id="f-link" name="productLink" type="url" data-i18n-ph="ph.link" placeholder="https://..." class="w-full px-4 py-3 text-sm bg-cream border border-transparent rounded-xl focus:bg-white focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all" />
+                      <input id="f-link" name="productLink" type="url" data-i18n-ph="ph.link" placeholder="https://www.coupang.com/vp/products/123 or smartstore.naver.com/example" class="w-full px-4 py-3 text-sm bg-cream border border-transparent rounded-xl focus:bg-white focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all" />
                     </div>
                     <div class="grid sm:grid-cols-2 gap-4">
                       <div>
@@ -512,7 +553,7 @@
                       </div>
                       <div>
                         <label for="f-addr" class="block text-xs font-semibold text-ink-muted mb-1.5" data-i18n="form.addr">Shipping address</label>
-                        <input id="f-addr" name="shippingAddress" type="text" data-i18n-ph="ph.addr" placeholder="Full address" class="w-full px-4 py-3 text-sm bg-cream border border-transparent rounded-xl focus:bg-white focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all" />
+                        <input id="f-addr" name="shippingAddress" type="text" data-i18n-ph="ph.addr" placeholder="123 Main St, Apt 4B, Los Angeles, CA 90001, USA" class="w-full px-4 py-3 text-sm bg-cream border border-transparent rounded-xl focus:bg-white focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all" />
                       </div>
                     </div>
                     <div>
@@ -540,7 +581,7 @@
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <h3 class="text-xl font-bold" data-i18n="form.successTitle">Request received</h3>
-            <p class="mt-2 text-ink-soft" data-i18n-html="form.successBody">We'll reply by email within <strong>2 hours</strong>. Please check your inbox.</p>
+            <p class="mt-2 text-ink-soft" data-i18n-html="form.successBody">We'll get back to you by email <strong>soon</strong>. Please check your inbox.</p>
             <button id="f-reset" type="button" class="mt-6 text-sm font-semibold text-accent hover:text-accent-hover transition-colors" data-i18n="form.reset">Send another request</button>
           </div>
         </div>
@@ -549,6 +590,39 @@
   </main>
 
   <!-- ─── FOOTER ─── -->
+  <!-- Login modal -->
+  <div id="loginModal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="login-title" aria-hidden="true">
+    <div id="loginOverlay" class="absolute inset-0 bg-ink/45 backdrop-blur-sm" aria-hidden="true"></div>
+    <div class="modal-box relative w-full max-w-md bg-white rounded-2xl shadow-lift border border-cream-dark p-6 sm:p-8">
+      <button id="loginClose" type="button" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-xl text-ink-soft hover:text-ink hover:bg-cream transition-colors" data-i18n-aria="login.close" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="pr-8">
+        <h2 id="login-title" class="text-xl font-extrabold tracking-tight text-ink" data-i18n="login.title">Welcome back</h2>
+        <p class="mt-1.5 text-sm text-ink-soft" data-i18n="login.subtitle">Sign in to track your requests</p>
+      </div>
+      <div class="mt-6 space-y-3">
+        <button type="button" class="w-full flex items-center justify-center gap-2.5 py-3 text-sm font-semibold border border-cream-dark rounded-xl hover:bg-cream transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <span data-i18n="login.google">Continue with Google</span>
+        </button>
+        <button type="button" class="w-full flex items-center justify-center gap-2.5 py-3 text-sm font-semibold border border-cream-dark rounded-xl hover:bg-cream transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <span data-i18n="login.apple">Continue with Apple</span>
+        </button>
+      </div>
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-cream-dark"></div></div>
+        <div class="relative flex justify-center"><span class="px-3 text-xs font-medium text-ink-soft bg-white" data-i18n="login.or">or</span></div>
+      </div>
+      <form id="loginForm" class="space-y-3" novalidate>
+        <input type="email" data-i18n-ph="login.emailPh" placeholder="Email" class="w-full px-4 py-3 text-sm bg-cream border border-transparent rounded-xl focus:bg-white focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all" />
+        <input type="password" data-i18n-ph="login.passPh" placeholder="Password" class="w-full px-4 py-3 text-sm bg-cream border border-transparent rounded-xl focus:bg-white focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all" />
+        <button type="submit" class="w-full py-3.5 text-sm font-semibold text-white bg-ink rounded-xl hover:bg-ink-muted transition-colors" data-i18n="login.submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+
   <footer class="border-t border-cream-dark bg-white py-12 px-4 sm:px-6" role="contentinfo">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">

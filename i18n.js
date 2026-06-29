@@ -7,17 +7,18 @@ window.HEZO_I18N = (function () {
       'nav.services': 'Services', 'nav.documents': 'Documents', 'nav.process': 'How It Works', 'nav.contact': 'Contact',
       'nav.login': 'Log in', 'nav.cta': 'Get Started', 'nav.language': 'Language', 'nav.menuOpen': 'Open menu', 'nav.menuClose': 'Close menu', 'nav.menuOpen': 'Open menu', 'nav.menuClose': 'Close menu',
       'hero.badge': 'Korea concierge · Est. for expats & visitors',
-      'hero.title1': 'Everything you want,', 'hero.title2': 'delivered from Korea.',
+      'hero.title1': 'Everything you want,', 'hero.titleSuffix': ' from Korea.',
+      'hero.rotate1': 'delivered', 'hero.rotate2': 'shipped', 'hero.rotate3': 'sourced', 'hero.rotate4': 'secured',
       'hero.subtitle': 'Documents, proxy shopping, and local logistics — one trusted team handling the complexity so you don\'t have to.',
       'hero.cta1': 'Start a request', 'hero.cta2': 'See the process',
-      'hero.stat1': 'Avg. response', 'hero.stat2': 'Countries shipped', 'hero.stat3': 'Client rating',
+      'hero.stat1Val': 'Soon', 'hero.stat1': 'We reply', 'hero.stat2': 'Countries shipped', 'hero.stat3': 'Client rating',
       'hero.card.label': 'Active request', 'hero.card.title': 'Proxy · Coupang order', 'hero.card.status': 'In transit',
       'hero.card.s1t': 'Link received', 'hero.card.s1d': 'Verified · In stock',
       'hero.card.s2t': 'Payment confirmed', 'hero.card.s2d': '₩142,000 + service fee',
       'hero.card.s3t': 'Purchased locally', 'hero.card.s3d': 'Repackaging for DHL',
       'hero.card.s4t': 'Global delivery', 'hero.card.s4d': 'Est. 5–7 business days',
       'hero.float': '📦 Shipped to 40+ countries',
-      'stores.label': 'Supported marketplaces',
+      'stores.label': 'Supported Platforms for Proxy Shopping',
       'svc.label': 'What we do', 'svc.title': 'Two services.<br/>One reliable team.',
       'svc.subtitle': 'Whether you\'re settling in or shopping from abroad, we handle the details with care.',
       'svc.doc.title': 'Document Services', 'svc.doc.desc': 'Immigration, visas, ARC, notarization, and certified translation — guided step by step.',
@@ -31,7 +32,7 @@ window.HEZO_I18N = (function () {
       'doc.common': 'Common requests', 'doc.notes': 'Important notes', 'doc.caseByCase': 'Case-by-case',
       'doc.expandedNote': 'Expanded legal-adjacent services (apostille, POA, contracts, legal consultation) will launch once our attorney partnership is finalized. Pricing below is indicative (KRW).',
       'doc.thNum': '#', 'doc.thCat': 'Category', 'doc.thCovers': 'Covers', 'doc.thPrice': 'Pricing (KRW)', 'doc.flexible': 'Flexible',
-      'doc.contactLabel': 'Submit by email', 'doc.contactDesc': 'Send your case to info@hezokorea.com — we\'ll reply within 2 hours by email.',
+      'doc.contactLabel': 'Submit by email', 'doc.contactDesc': 'Send your case to info@hezokorea.com — we\'ll get back to you soon.',
       'doc.cta': 'Submit a case inquiry →',
       'proc.label': 'How it works', 'proc.title': 'From link to doorstep<br/>in five steps.',
       'proc.subtitle': 'Our proxy shopping flow is designed to be transparent at every stage — no surprises, no guesswork.',
@@ -41,19 +42,20 @@ window.HEZO_I18N = (function () {
       'proc.s4t': 'We purchase', 'proc.s4d': 'Our local team buys immediately using established seller accounts.',
       'proc.s5t': 'Delivered', 'proc.s5d': 'Repackaged and shipped to your door via DHL or UPS.',
       'contact.label': 'Get in touch', 'contact.title': 'Tell us what<br/>you need.',
-      'contact.subtitle': 'Submit the form below — our coordinator will respond by email within 2 hours.',
+      'contact.subtitle': 'Submit the form below — our coordinator will get back to you by email soon.',
       'contact.emailLabel': 'Inquiries', 'contact.emailNote': 'All first contact is by email only.',
-      'contact.response': 'Response time', 'contact.responseVal': 'Within 2 hours, Mon–Sat',
+      'contact.response': 'Our reply', 'contact.responseVal': 'We\'ll get back to you soon',
       'form.name': 'Name', 'form.email': 'Email', 'form.service': 'Service type', 'form.message': 'Message',
       'form.submit': 'Send request', 'form.sending': 'Sending…', 'form.select': 'Select...',
       'form.doc': 'Document Services', 'form.proxy': 'Proxy Purchasing', 'form.general': 'General Inquiry',
       'form.docCat': 'Case category', 'form.selectCat': 'Select a category...',
       'form.link': 'Product link', 'form.phone': 'Phone', 'form.addr': 'Shipping address', 'form.notes': 'Options & notes',
       'form.catRequired': 'Please select a document category.',
-      'form.successTitle': 'Request received', 'form.successBody': 'We\'ll reply by email within <strong>2 hours</strong>. Please check your inbox.',
+      'form.successTitle': 'Request received', 'form.successBody': 'We\'ll get back to you by email <strong>soon</strong>. Please check your inbox.',
       'form.reset': 'Send another request',
       'ph.name': 'Your name', 'ph.email': 'you@email.com', 'ph.message': 'Describe your request...',
-      'ph.link': 'https://...', 'ph.phone': '+1 555 000 0000', 'ph.addr': 'Full address', 'ph.notes': 'Size, color, quantity...',
+      'ph.link': 'https://www.coupang.com/vp/products/123 or smartstore.naver.com/example', 'ph.phone': '+1 (555) 123-4567',
+      'ph.addr': '123 Main St, Apt 4B, Los Angeles, CA 90001, USA', 'ph.notes': 'e.g. Size M, Color Black, Qty 1',
       'login.title': 'Welcome back', 'login.subtitle': 'Sign in to track your requests',
       'login.google': 'Continue with Google', 'login.apple': 'Continue with Apple', 'login.or': 'or',
       'login.emailPh': 'Email', 'login.passPh': 'Password', 'login.submit': 'Sign in', 'login.close': 'Close',
@@ -99,13 +101,14 @@ window.HEZO_I18N = (function () {
   Object.assign(zh.meta, { title: 'HezoKorea — 您在韩国想要的一切', description: 'HezoKorea — 您在韩国可信赖的文件、代购与生活服务。' });
   Object.assign(zh.keys, {
     'nav.services':'服务','nav.documents':'文件服务','nav.process':'流程','nav.contact':'联系','nav.login':'登录','nav.cta':'开始','nav.language':'语言',
-    'hero.badge':'韩国礼宾 · 为外籍人士与访客服务','hero.title1':'您在韩国想要的一切，','hero.title2':'我们帮您实现。',
+    'hero.badge':'韩国礼宾 · 为外籍人士与访客服务','hero.title1':'您在韩国想要的一切，',
+    'hero.titleSuffix':'，我们帮您实现。','hero.rotate1':'配送','hero.rotate2':'发货','hero.rotate3':'代购','hero.rotate4':'安心',
     'hero.subtitle':'文件办理、代购韩国商品、本地物流 — 一个可信赖的团队为您处理所有复杂事务。',
-    'hero.cta1':'提交请求','hero.cta2':'了解流程','hero.stat1':'平均回复','hero.stat2':'配送国家','hero.stat3':'客户评分',
+    'hero.cta1':'提交请求','hero.cta2':'了解流程','hero.stat1Val':'尽快','hero.stat1':'我们回复','hero.stat2':'配送国家','hero.stat3':'客户评分',
     'hero.card.label':'进行中的请求','hero.card.title':'代购 · Coupang订单','hero.card.status':'运输中',
     'hero.card.s1t':'链接已收到','hero.card.s1d':'已验证 · 有货','hero.card.s2t':'付款已确认','hero.card.s2d':'₩142,000 + 服务费',
     'hero.card.s3t':'已在韩国购买','hero.card.s3d':'DHL重新包装中','hero.card.s4t':'全球配送','hero.card.s4d':'预计5–7个工作日',
-    'hero.float':'📦 配送至40+国家','stores.label':'支持的平台',
+    'hero.float':'📦 配送至40+国家','stores.label':'代购支持平台',
     'svc.label':'我们的服务','svc.title':'两项服务。<br/>一个可靠团队。','svc.subtitle':'无论您是定居还是海外购物，我们都细心处理每个细节。',
     'svc.doc.title':'文件服务','svc.doc.desc':'移民、签证、外国人登录证、公证及认证翻译 — 逐步英文指导。',
     'svc.doc.link':'查看所有类别','svc.proxy.title':'代购服务','svc.proxy.desc':'代您购买韩国商品并全球配送。费用透明，无语言障碍。',
@@ -114,19 +117,19 @@ window.HEZO_I18N = (function () {
     'doc.tabCurrent':'现有服务','doc.tabExpanded':'扩展服务（即将推出）','doc.common':'常见请求','doc.notes':'重要说明','doc.caseByCase':'视情况而定',
     'doc.expandedNote':'扩展法律服务（海牙认证、委托书、合同等）将在律师合作确定后推出。以下价格为参考（韩元）。',
     'doc.thNum':'#','doc.thCat':'类别','doc.thCovers':'涵盖内容','doc.thPrice':'价格（韩元）','doc.flexible':'灵活定价',
-    'doc.contactLabel':'通过邮件提交','doc.contactDesc':'请将案件发送至 info@hezokorea.com — 我们将在2小时内通过邮件回复。',
+    'doc.contactLabel':'通过邮件提交','doc.contactDesc':'请将案件发送至 info@hezokorea.com — 我们会尽快回复您。',
     'doc.cta':'提交案件咨询 →',
     'proc.label':'流程','proc.title':'从链接到 doorstep<br/>只需五步。','proc.subtitle':'代购流程全程透明 — 无隐藏费用，无猜测。',
     'proc.s1t':'分享链接','proc.s1d':'粘贴任何韩国购物网站链接 — Coupang、Naver、Bunjang等。','proc.s2t':'我们核实','proc.s2d':'数小时内核实库存、状况及配送可行性。',
     'proc.s3t':'您付款','proc.s3d':'商品价格 + 固定服务费。承诺前提供完整明细。','proc.s4t':'我们购买','proc.s4d':'本地团队立即通过Established账户购买。',
     'proc.s5t':'送达','proc.s5d':'重新包装后通过DHL或UPS送至您家门口。',
-    'contact.label':'联系我们','contact.title':'告诉我们<br/>您的需求。','contact.subtitle':'填写下方表单 — 协调员将在2小时内通过邮件回复。',
-    'contact.emailLabel':'咨询邮箱','contact.emailNote':'首次联系仅通过邮件。','contact.response':'回复时间','contact.responseVal':'2小时内，周一至周六',
+    'contact.label':'联系我们','contact.title':'告诉我们<br/>您的需求。','contact.subtitle':'填写下方表单 — 协调员将尽快通过邮件回复您。',
+    'contact.emailLabel':'咨询邮箱','contact.emailNote':'首次联系仅通过邮件。','contact.response':'我们的回复','contact.responseVal':'我们会尽快回复您',
     'form.name':'姓名','form.email':'邮箱','form.service':'服务类型','form.message':'留言','form.submit':'发送请求','form.sending':'发送中…',
     'form.select':'请选择...','form.doc':'文件服务','form.proxy':'代购服务','form.general':'一般咨询','form.docCat':'案件类别','form.selectCat':'选择类别...',
     'form.link':'商品链接','form.phone':'电话','form.addr':'配送地址','form.notes':'选项与备注','form.catRequired':'请选择文件类别。',
-    'form.successTitle':'请求已收到','form.successBody':'我们将在<strong>2小时</strong>内通过邮件回复。请查收收件箱。','form.reset':'再发一条请求',
-    'ph.name':'您的姓名','ph.email':'you@email.com','ph.message':'描述您的需求...','ph.link':'https://...','ph.phone':'+86 138 0000 0000','ph.addr':'完整地址','ph.notes':'尺码、颜色、数量...',
+    'form.successTitle':'请求已收到','form.successBody':'我们会尽快通过邮件回复您。请查收收件箱。','form.reset':'再发一条请求',
+    'ph.name':'您的姓名','ph.email':'you@email.com','ph.message':'描述您的需求...','ph.link':'https://www.coupang.com/vp/products/123 或 smartstore.naver.com/示例','ph.phone':'+86 138 0000 0000','ph.addr':'北京市朝阳区建国路88号 或 123 Main St, Los Angeles, CA 90001, USA','ph.notes':'例如：M码、黑色、数量1',
     'login.title':'欢迎回来','login.subtitle':'登录以跟踪您的请求','login.google':'使用 Google 继续','login.apple':'使用 Apple 继续','login.or':'或',
     'login.emailPh':'邮箱','login.passPh':'密码','login.submit':'登录','login.close':'关闭','footer.contact':'联系','footer.privacy':'隐私',
     'cat.visa':'签证与移民','cat.arc':'外国人登录证与居留','cat.translation':'文件翻译与认证','cat.family':'家庭与个人文件','cat.business':'商业与公司文件','cat.custom':'定制请求','cat.other':'其他'
@@ -147,13 +150,14 @@ window.HEZO_I18N = (function () {
   Object.assign(ja.meta, { title: 'HezoKorea — 韓国で欲しいものすべて', description: 'HezoKorea — 書類、代行購入、韓国生活の頼れるパートナー。' });
   Object.assign(ja.keys, {
     'nav.services':'サービス','nav.documents':'書類','nav.process':'流れ','nav.contact':'お問合せ','nav.login':'ログイン','nav.cta':'始める','nav.language':'言語',
-    'hero.badge':'韓国コンシェルジュ · 外国人・訪問者向け','hero.title1':'韓国で欲しいもの、','hero.title2':'すべてお届けします。',
+    'hero.badge':'韓国コンシェルジュ · 外国人・訪問者向け','hero.title1':'韓国で欲しいもの、',
+    'hero.titleSuffix':'をお届けします。','hero.rotate1':'配送','hero.rotate2':'発送','hero.rotate3':'代購','hero.rotate4':'安心',
     'hero.subtitle':'書類、代行購入、現地ロジスティクス — 信頼できるチームが複雑さを代行します。',
-    'hero.cta1':'リクエスト開始','hero.cta2':'流れを見る','hero.stat1':'平均返信','hero.stat2':'配送国','hero.stat3':'評価',
+    'hero.cta1':'リクエスト開始','hero.cta2':'流れを見る','hero.stat1Val':'すぐ','hero.stat1':'ご返信','hero.stat2':'配送国','hero.stat3':'評価',
     'hero.card.label':'進行中','hero.card.title':'代行 · Coupang注文','hero.card.status':'配送中',
     'hero.card.s1t':'リンク受領','hero.card.s1d':'確認済 · 在庫あり','hero.card.s2t':'支払い確認','hero.card.s2d':'₩142,000 + 手数料',
     'hero.card.s3t':'現地購入済','hero.card.s3d':'DHL梱包中','hero.card.s4t':'国際配送','hero.card.s4d':'5–7営業日',
-    'hero.float':'📦 40カ国以上に配送','stores.label':'対応マーケット',
+    'hero.float':'📦 40カ国以上に配送','stores.label':'代行購入対応プラットフォーム',
     'svc.label':'サービス','svc.title':'2つのサービス。<br/>1つの信頼できるチーム。','svc.subtitle':'定住も海外からの購入も、丁寧にサポートします。',
     'svc.doc.title':'書類サービス','svc.doc.desc':'移民、ビザ、ARC、公証、認証翻訳 — ステップごとに案内。',
     'svc.doc.link':'全カテゴリを見る','svc.proxy.title':'代行購入','svc.proxy.desc':'韓国商品を代購し世界配送。透明な料金、言語の壁なし。',
@@ -161,16 +165,16 @@ window.HEZO_I18N = (function () {
     'doc.label':'書類コンサル','doc.title':'韓国在住外国人向け書類ガイド','doc.subtitle':'チェックリスト作成、書類確認、手続き案内。書類準備とプロセス案内のみ — 複雑な法律問題は専門家へ。',
     'doc.tabCurrent':'現在のサービス','doc.tabExpanded':'拡張（近日）','doc.common':'よくある依頼','doc.notes':'重要事項','doc.caseByCase':'案件による',
     'doc.expandedNote':'アポスティーユ、委任状、契約等は弁護士提携後に開始。価格は参考（ウォン）。',
-    'doc.contactLabel':'メールでお問合せ','doc.contactDesc':'info@hezokorea.com へ — 2時間以内にメールで返信します。',
+    'doc.contactLabel':'メールでお問合せ','doc.contactDesc':'info@hezokorea.com へ — できるだけ早くご返信します。',
     'doc.cta':'案件を送信 →',
     'proc.label':'流れ','proc.title':'リンクから玄関まで<br/>5ステップ。','proc.subtitle':'代行購入は各段階で透明 — サプライズなし。',
     'proc.s1t':'リンク共有','proc.s1d':'Coupang、Naver、Bunjang等のURLを貼付。','proc.s2t':'在庫確認','proc.s2d':'数時間以内に在庫・状態・配送可否を確認。',
     'proc.s3t':'お支払い','proc.s3d':'商品代 + 手数料。確定前に全内訳。','proc.s4t':'現地購入','proc.s4d':'現地チームが即購入。','proc.s5t':'お届け','proc.s5d':'DHLまたはUPSで再梱包配送。',
-    'contact.label':'お問合せ','contact.title':'ご要望を<br/>お聞かせください。','contact.subtitle':'フォーム送信後、2時間以内にメールで返信します。',
-    'contact.emailLabel':'お問合せ','contact.emailNote':'初回連絡はメールのみ。','contact.response':'返信時間','contact.responseVal':'2時間以内（月〜土）',
+    'contact.label':'お問合せ','contact.title':'ご要望を<br/>お聞かせください。','contact.subtitle':'フォーム送信後、できるだけ早くメールでご返信します。',
+    'contact.emailLabel':'お問合せ','contact.emailNote':'初回連絡はメールのみ。','contact.response':'ご返信','contact.responseVal':'できるだけ早くご連絡します',
     'form.name':'お名前','form.email':'メール','form.service':'サービス','form.message':'メッセージ','form.submit':'送信','form.sending':'送信中…',
     'form.select':'選択...','form.doc':'書類サービス','form.proxy':'代行購入','form.general':'一般問合せ','form.docCat':'案件カテゴリ','form.selectCat':'カテゴリを選択...',
-    'form.catRequired':'書類カテゴリを選択してください。','form.successTitle':'受付完了','form.successBody':'<strong>2時間</strong>以内にメールで返信します。','form.reset':'もう一度送信',
+    'form.catRequired':'書類カテゴリを選択してください。','form.successTitle':'受付完了','form.successBody':'できるだけ早くメールでご返信します。','form.reset':'もう一度送信',
     'ph.name':'お名前','ph.message':'ご要望を記入...','login.title':'おかえりなさい','login.google':'Googleで続行','login.apple':'Appleで続行',
     'cat.visa':'ビザ・移民','cat.arc':'ARC・居留','cat.translation':'翻訳・認証','cat.family':'家族・個人書類','cat.business':'ビジネス書類','cat.custom':'カスタム','cat.other':'その他'
   });
@@ -193,9 +197,9 @@ window.HEZO_I18N = (function () {
     'hero.cta1':'Gửi yêu cầu','hero.cta2':'Xem quy trình','hero.stat1':'Phản hồi TB','hero.stat2':'Quốc gia giao','hero.stat3':'Đánh giá',
     'stores.label':'Sàn hỗ trợ','svc.label':'Dịch vụ','svc.title':'Hai dịch vụ.<br/>Một đội tin cậy.',
     'doc.label':'Tư vấn giấy tờ','doc.title':'Hướng dẫn giấy tờ chuyên nghiệp cho người nước ngoài tại Hàn',
-    'doc.contactLabel':'Gửi qua email','doc.contactDesc':'Gửi đến info@hezokorea.com — phản hồi trong 2 giờ.',
-    'contact.subtitle':'Gửi form — điều phối viên trả lời email trong 2 giờ.','contact.emailLabel':'Liên hệ','contact.emailNote':'Liên hệ đầu tiên chỉ qua email.',
-    'form.submit':'Gửi yêu cầu','form.successTitle':'Đã nhận yêu cầu','form.successBody':'Phản hồi email trong <strong>2 giờ</strong>.',
+    'doc.contactLabel':'Gửi qua email','doc.contactDesc':'Gửi đến info@hezokorea.com — chúng tôi sẽ phản hồi sớm.',
+    'contact.subtitle':'Gửi form — điều phối viên sẽ phản hồi qua email sớm.','contact.emailLabel':'Liên hệ','contact.emailNote':'Liên hệ đầu tiên chỉ qua email.',
+    'form.submit':'Gửi yêu cầu','form.successTitle':'Đã nhận yêu cầu','form.successBody':'Chúng tôi sẽ phản hồi qua email <strong>sớm</strong>.',
     'cat.visa':'Visa & Nhập cư','cat.arc':'ARC & Cư trú','cat.translation':'Dịch thuật & Công chứng','cat.family':'Gia đình & Cá nhân','cat.business':'Doanh nghiệp','cat.custom':'Yêu cầu riêng','cat.other':'Khác'
   });
 
@@ -208,9 +212,9 @@ window.HEZO_I18N = (function () {
     'hero.cta1':'문의하기','hero.cta2':'프로세스 보기','hero.stat1':'평균 응답','hero.stat2':'배송 국가','hero.stat3':'고객 평점',
     'stores.label':'지원 마켓플레이스','svc.label':'서비스','svc.title':'두 가지 서비스.<br/>하나의 신뢰.',
     'doc.label':'서류 컨설팅','doc.title':'한국 체류 외국인을 위한 전문 서류 안내',
-    'doc.contactLabel':'이메일로 문의','doc.contactDesc':'info@hezokorea.com 으로 보내주세요 — 2시간 내 답변드립니다.',
-    'contact.subtitle':'양식을 제출해 주시면 2시간 내 이메일로 답변드립니다.','contact.emailLabel':'문의','contact.emailNote':'첫 문의는 이메일로만 받습니다.',
-    'form.submit':'요청 보내기','form.successTitle':'접수 완료','form.successBody':'<strong>2시간</strong> 내 이메일로 답변드립니다.',
+    'doc.contactLabel':'이메일로 문의','doc.contactDesc':'info@hezokorea.com 으로 보내주세요 — 곧 답변드리겠습니다.',
+    'contact.subtitle':'양식을 제출해 주시면 코디네이터가 곧 이메일로 답변드립니다.','contact.emailLabel':'문의','contact.emailNote':'첫 문의는 이메일로만 받습니다.',
+    'form.submit':'요청 보내기','form.successTitle':'접수 완료','form.successBody':'곧 이메일로 답변드리겠습니다.',
     'cat.visa':'비자·이민','cat.arc':'외국인등록증·체류','cat.translation':'번역·인증','cat.family':'가족·개인 서류','cat.business':'사업·법인 서류','cat.custom':'맞춤 요청','cat.other':'기타'
   });
   ko.docs = [
@@ -235,7 +239,7 @@ window.HEZO_I18N = (function () {
 
   var th = cloneWithFallback(en, { meta: { title: 'HezoKorea — ทุกสิ่งที่คุณต้องการในเกาหลี' }, keys: {
     'nav.services':'บริการ','nav.documents':'เอกสาร','nav.process':'ขั้นตอน','nav.contact':'ติดต่อ','nav.login':'เข้าสู่ระบบ','nav.cta':'เริ่มต้น',
-    'hero.title1':'ทุกสิ่งที่คุณต้องการ,','hero.title2':'ส่งตรงจากเกาหลี','hero.cta1':'ส่งคำขอ','doc.contactDesc':'ส่งไปที่ info@hezokorea.com — ตอบภายใน 2 ชม.',
+    'hero.title1':'ทุกสิ่งที่คุณต้องการ,','hero.title2':'ส่งตรงจากเกาหลี','hero.cta1':'ส่งคำขอ','doc.contactDesc':'ส่งไปที่ info@hezokorea.com — เราจะติดต่อกลับเร็วๆ นี้',
     'contact.emailNote':'ติดต่อครั้งแรกทางอีเมลเท่านั้น','form.submit':'ส่งคำขอ','cat.visa':'วีซ่าและต immigr','cat.arc':'ARC และที่พัก'
   }});
   var id = cloneWithFallback(en, { meta: { title: 'HezoKorea — Semua yang Anda inginkan di Korea' }, keys: {
@@ -253,7 +257,7 @@ window.HEZO_I18N = (function () {
   var es = cloneWithFallback(en, { meta: { title: 'HezoKorea — Todo lo que quieres en Corea' }, keys: {
     'nav.services':'Servicios','nav.documents':'Documentos','nav.process':'Cómo funciona','nav.contact':'Contacto','nav.login':'Iniciar sesión','nav.cta':'Empezar',
     'hero.title1':'Todo lo que quieres,','hero.title2':'desde Corea.','hero.cta1':'Enviar solicitud',
-    'doc.contactDesc':'A info@hezokorea.com — respuesta en 2 horas.','contact.emailNote':'Primer contacto solo por email.',
+    'doc.contactDesc':'A info@hezokorea.com — nos pondremos en contacto pronto.','contact.emailNote':'Primer contacto solo por email.',
     'form.submit':'Enviar solicitud','cat.visa':'Visa e inmigración','cat.arc':'ARC y residencia'
   }});
   var fr = cloneWithFallback(en, { meta: { title: 'HezoKorea — Tout ce que vous voulez en Corée' }, keys: {
@@ -265,13 +269,13 @@ window.HEZO_I18N = (function () {
   var de = cloneWithFallback(en, { meta: { title: 'HezoKorea — Alles, was Sie in Korea wollen' }, keys: {
     'nav.services':'Leistungen','nav.documents':'Dokumente','nav.process':'Ablauf','nav.contact':'Kontakt','nav.login':'Anmelden','nav.cta':'Starten',
     'hero.title1':'Alles, was Sie wollen,','hero.title2':'aus Korea.','hero.cta1':'Anfrage senden',
-    'doc.contactDesc':'An info@hezokorea.com — Antwort innerhalb von 2 Std.','contact.emailNote':'Erstkontakt nur per E-Mail.',
+    'doc.contactDesc':'An info@hezokorea.com — wir melden uns bald.','contact.emailNote':'Erstkontakt nur per E-Mail.',
     'form.submit':'Senden','cat.visa':'Visum & Einwanderung','cat.arc':'ARC & Aufenthalt'
   }});
   var tl = cloneWithFallback(en, { meta: { title: 'HezoKorea — Lahat ng gusto mo sa Korea' }, keys: {
     'nav.services':'Serbisyo','nav.documents':'Dokumento','nav.process':'Proseso','nav.contact':'Makipag-ugnayan','nav.login':'Mag-log in','nav.cta':'Magsimula',
     'hero.title1':'Lahat ng gusto mo,','hero.title2':'mula sa Korea.','hero.cta1':'Magpadala ng request',
-    'doc.contactDesc':'Sa info@hezokorea.com — sagot sa loob ng 2 oras.','contact.emailNote':'Unang contact sa email lamang.',
+    'doc.contactDesc':'Sa info@hezokorea.com — babalikan ka namin agad.','contact.emailNote':'Unang contact sa email lamang.',
     'form.submit':'Ipadala','cat.visa':'Visa at Imigrasyon','cat.arc':'ARC at Paninirahan'
   }});
 
